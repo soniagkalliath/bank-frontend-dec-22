@@ -1,0 +1,69 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" >
+        <i class="fa-solid fa-building-columns me-2"></i>
+        Swasti Bank
+      </a>
+    </div>
+  </nav>
+
+  <!-- register success msg -->
+  <div *ngIf="registerSuccessMsg" style="width: 100%; height: 100vh;" class="container d-flex justify-content-center align-items-center text-center">
+    <h3 class="text-primary"> <img width="50px" src="https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif" alt="spinner"> Your data's are getting registered... Please wait..... </h3>
+  </div>
+
+  <!-- register design -->
+  <div *ngIf="!registerSuccessMsg">
+    <div class="container-fluid mt-3">
+      <h1 class="text-primary">Account Opening Form</h1>
+      <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptatibus aut aliquid nulla magnam ipsum maiores voluptas illum. Illum est quae quis veniam. Quibusdam iure saepe debitis in, aliquam neque. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis alias ab voluptatibus, nobis autem officia illum, cum ducimus et dolores porro eaque vel ut recusandae atque, ex veritatis velit repudiandae?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia optio vero voluptatibus, quos dicta necessitatibus. Rerum magnam doloremque molestiae, commodi necessitatibus esse ipsa, exercitationem quae blanditiis magni maxime, veniam culpa!</p>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-5  mt-5">
+              <!-- form -->
+              <form [formGroup]="registerForm" class="border p-3 rounded" (ngSubmit)="register()">
+                  
+                  <div class="form-floating mb-3">
+                      <input name="username" formControlName="username" type="text" class="form-control" id="floatingInputname" placeholder="Username">
+                      <label for="floatingInput">Username</label>
+                    </div>
+  
+                    <!-- username error msg -->
+                    <div *ngIf="this.registerForm.get('username')?.errors&&this.registerForm.get('username')?.touched" class="text-danger mb-3"> Invalid Username</div>
+  
+                  <div class="form-floating mb-3">
+                      <input name="acno" formControlName="acno" type="text" class="form-control" id="floatingInputacno" placeholder="Account Number">
+                      <label for="floatingInput">Account Number</label>
+                    </div>
+  
+                     <!-- acno error msg -->
+                     <div *ngIf="this.registerForm.get('acno')?.errors&&this.registerForm.get('acno')?.touched" class="text-danger mb-3"> Invalid Account Number</div>
+  
+                    <div class="form-floating">
+                      <input name="password" formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+  
+                     <!-- pswd error msg -->
+                     <div *ngIf="this.registerForm.get('password')?.errors&&this.registerForm.get('password')?.touched" class="text-danger mb-3"> Invalid Password</div>
+                   
+                     <!-- registerErrorMsg -->
+                    <div class="mt-2 mb-2 text-danger fw-bolder"> {{registerErrorMsg}} </div>
+  
+                    <div class="mt-4">
+                      <button type="submit" class="btn btn-success me-3">Register</button>
+                      <span>
+                          Already a User? Click here to <a routerLink="">Log In</a>
+                      </span> 
+                    </div>
+              </form>
+          </div>
+          <div class="col-lg-7 text-center">
+              <!-- image -->
+              <img width="500px" class="img-fluid " src="https://images.ctfassets.net/ufihiutbamyi/1HnE7XznrjGZHPTXlrTcKw/f8084325d10fe1ed3cd110d2fc7fc7be/Banking__Header_.png?w=1000&h=752&q=90&fm=png" alt="register logo">
+          </div>
+      </div>
+    </div>
+  </div>

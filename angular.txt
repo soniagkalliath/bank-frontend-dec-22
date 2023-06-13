@@ -1,0 +1,71 @@
+
+
+        Angular - Front End Technology(HTML CSS TS)
+
+    - Basic Commands 
+        1. to install angular cli : npm i -g @angular/cli
+        2. to create project : ng new project-name
+        3. to run a project : ng serve
+        4. to check angular version : ng v
+        5. to generate component : ng g c component-name
+        6. to generate Services : ng g s service-folder/service-name
+        7. to create pipe : ng g p pipe-folder/pipe-name
+
+    - Basic Building Blocks Of Angular
+        1. Module : Root Module : AppModule
+        2. Component : html,css,ts : Root Component- AppComponent
+        3. Decorator
+        4. To set up path for component : AppRoutingModule in Routes array
+            {path:'component path', component:component-name}
+            use router-outlet selector in AppComponent.html : To change according to the user 
+        5. Data Binding : Shairing data within a component
+        - One Way Binding: Data shairing will be held in one direction at a time
+            - ts(component) to html(view)
+                - String Interpolation: {{property name}} in html
+                - Property Binding: [attribute-name] = "property name"
+            - html(view) to ts(component)
+                - Event Binding: (event-name)="function call()"
+                - Event Binding using $event : (event-name) = "function call($event)"
+                - Event Binding using template reference: #variable-name, (event-name) = "function call(variable-name)"
+        - Two Way Binding: Data shairing will be held in both direction at a time
+            - Using ngModel: [(ngModel)]="property-name" if it is inside a form tag the set the name property of that input tag
+                    - Import FormsModule  in AppModule
+        6. Dependenecy Injection : in constructor, 
+            syntax: access-specifier variable-name : dependent-class-name
+            access-specifier : public , private ,protected
+        7. Angular Services : Share Common logic between components
+        8. Directives : DOM Manipulation
+            - Component Directives 
+            - Structural Directives : To add / remove html elements based on class property
+                - *ngFor="let variable-name of array-name" in html
+                - *ngIf="condition" when condition is true then html elements will add else remove from DOM
+            - Attribute Directives : based on class property we can apply style to html elements
+                - inBuilt attribute Directives : ngClass
+                - userdefined attribute Directives :
+        9. Asynchronous Call - Resolving
+            - RxJS - Reactive Extentension For Java Script
+            - To resolve Asynchronous function angular uses
+                - Observable : 
+                    - subscribe(observer:call back function)
+        10. API Call :
+            - Import HttpClientModule to AppModule
+            - Dependenecy Inject HttpClient to get http request
+        11. ActivatedRoute class: Provides access to information about a route/url/path associated with a component 
+            - params : to get path parameter from a url
+        12. Angular Pipe : Transform user input to another format
+            - syntax:
+                {{ value_expression | pipe-operator [ : format [ : timezone [ : locale ] ] ] }}
+        13. Angular Forms
+            - Template Driven Forms : using ngModel to Binding
+                - Validation in template Driven forms
+            - Model Driven Forms : create a model for form in ts file first
+                - Reactive Forms : To apply user input validation, Import ReactiveFormsModule
+                    - Form group : Dependenecy inject FormBuilder class
+                    - Form array 
+                    - Form controlname
+        14. Angular with material design
+        15. Data Shairing between parent and child
+            - 1. child to parent : output Decorator
+            - 2. parent to child : input Decorator
+        16. EventEmitter - To generate userdefined events
+            - to occur an userdefined event use emit()

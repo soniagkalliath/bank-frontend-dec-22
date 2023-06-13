@@ -1,0 +1,185 @@
+<!-- nav bar -->
+  <nav *ngIf="!deleteConfirmStatus" class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <div class="col-lg-9">
+          <a class="navbar-brand text-light" >
+            <i class="fa-solid fa-building-columns me-2"></i>
+            Swasti Bank
+          </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav  mb-2 mb-lg-0">
+          <li class="nav-item me-5">
+            <a (click)="deleteAcnoNavBar()" class="nav-link active text-light btn" aria-current="page" ><i class="fa-solid fa-trash me-1 text-danger"></i> My Account </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light btn" aria-current="page" (click)="logout()"><i class="fa-solid fa-right-from-bracket text-warning me-1"></i> Log out</a>
+          </li>         
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- logout div -->
+  <div *ngIf="logoutStatus" style="width: 100%; height: 100vh;"  class="d-flex justify-content-center align-items-center">
+    <h1 class="text-center text-primary">Please wait... <br>
+      While your logging out!!!!</h1>
+  </div>
+
+  <!-- deleteSuccessMsg -->
+  <div *ngIf="deleteSuccessMsg"  style="width: 100%; height: 100vh;"  class="d-flex justify-content-center align-items-center">
+    <h3 class="text-center text-danger"> <img width="50px" src="https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif" alt="spinner"> {{deleteSuccessMsg}} </h3>
+  </div>
+
+  <!-- delete confirm child -->
+  <app-delete-confirm (onDelete)="deleteFromParent()" (onCancel)="cancelDeleteConfirm()" [deleteAcno]="acno" ></app-delete-confirm>
+
+
+  <!-- dashboard  design -->
+ <ng-container *ngIf="!deleteConfirmStatus">
+    
+    <div *ngIf="!logoutStatus">
+      <marquee behavior="" direction="" bgcolor="bisque">Important: Deposit interest are raised upto 7.4%, hurry up save more... enjoy more!!!!</marquee>
+      <!-- landing design -->
+      <div  class="row m-5">
+        
+          <div class="col-md-4">
+              <!-- content -->
+              <h1 style="margin-top: 100px;">Welcome {{user}}...</h1>
+              <label style="text-align: justify;" class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla enim, ea recusandae deserunt, corrupti repudiandae ducimus dolorem quae, asperiores corporis ipsum repellendus fuga sunt consectetur. Distinctio nemo necessitatibus culpa cum!</label>
+              <div style="text-align: justify;" class="collapse" id="collapseExample">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur ipsam dicta veritatis explicabo eaque recusandae voluptatibus laudantium, alias nisi sed quas fuga perferendis, impedit magnam consequatur, provident natus laborum ipsum.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur ipsam dicta veritatis explicabo eaque recusandae voluptatibus laudantium.
+                </div>
+              <button (click)="collapse()" data-bs-toggle="collapse" data-bs-target="#collapseExample" class="btn btn-primary mt-2">
+                  Read 
+                  <span *ngIf="isCollapse">More</span>
+                  <span *ngIf="!isCollapse">Less</span>
+              </button>
+          </div>
+          <div class="col-md-8">
+              <!-- image -->
+              <img width="100%" src="https://www.processmaker.com/wp-content/uploads/2020/05/Online-Mobile-Banking.png" alt="online banking">
+          </div>
+      </div>
+      <!-- servises -->
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="line"></div>
+        <h3 class="fw-bolder">* Our Services *</h3>
+        <div class="line"></div>
+      </div>
+      <div class="row m-5">
+        <div class="col-lg-4 d-flex justify-content-center ">
+          <!-- balance -->
+          <div (click)="getBalance()" class="card btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" style="width: 18rem;">
+            <div class="image"><img src="https://lh3.googleusercontent.com/CNihOMWrmm7uKT2hZn9UKqxsROsGMgmvolPqJKiiv8DXC_X0_3Z9aDvNgWDhMtPrKsk=w170" class="card-img-top" alt="balance img"></div>
+            <div class="card-body">
+              <h5 class="card-title">Balance Enquiry</h5>
+            </div>
+          </div>
+        </div>
+        <!-- fund transfer -->
+        <div class="col-lg-4 d-flex justify-content-center">
+          <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="card btn" style="width: 18rem;">
+           <div class="image">
+              <img src="https://www.chewstick.org/wp-content/uploads/2016/03/Bank_Transfer_icons3.png" class="card-img-top" alt="...">
+              
+           </div>
+           <div class="card-body">
+              <h5 class="card-title">Fund Transfer</h5>
+            </div>
+          </div>
+        </div>
+        <!-- transactions -->
+        <div class="col-lg-4 d-flex justify-content-center ">
+          <div routerLink="/transactions" class="card btn" style="width: 18rem;">
+            <div class="image"><img src="https://cdn2.iconfinder.com/data/icons/scenarium-vol-3-1/128/007_money_finance_transaction_payment_terminal_card_shopping-512.png" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+              <h5 class="card-title">Mini Statement</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </ng-container>
+
+  <!-- footer -->
+   <!-- Footer-->
+ <footer *ngIf="!deleteConfirmStatus" class="py-5">
+  <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; Swasti Bank 2023</p></div>
+</footer>
+
+
+  <!-- balance enquiry offcanvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- image -->
+      <img  class="w-75 ms-5 mt-5" src="https://www.finanzzas.com/wp-content/uploads/money-3630935_1280-1.png" alt="balance image">
+      <div class="mt-5">
+        <h3>Hi {{user}},</h3>
+        <p>Your current balance is <span class="text-danger fw-bolder">Rs. {{balance}}</span> </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- fund transfer Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Fund Transfer Form</h1>
+          <button (click)="closeFundTransferForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mt-2 mb-2">
+            <img style="width: 100%;" src="https://i.postimg.cc/9QnwbCv5/electronic-funds-transfer-bank-money-transfer-wire-transfer-png-favpng-S0u7f7-R0-Zc-Bazsn-JLm-Fqk-Lk-WY-rem.png" alt="transfer img">
+          </div>
+            <!-- reactive form -->
+          <form [formGroup]="fundTransferForm">
+            <!-- credit acno -->
+            <div class="form-floating mb-3">
+                <input name="creditAcno" formControlName="creditAcno" type="number" class="form-control" id="floatingInputcacno" placeholder="Credit Account">
+                <label for="floatingInputcacno">Credit Account</label>
+              </div>
+              <!-- acno error msg -->
+              <div *ngIf="this.fundTransferForm.get('creditAcno')?.errors&&this.fundTransferForm.get('creditAcno')?.touched" class="text-danger mb-3"> Invalid credit Account Number</div>
+
+              
+            <!-- amount -->
+            <div class="form-floating mb-3">
+                <input name="amount" formControlName="amount" type="number" class="form-control" id="floatingInputamt" placeholder="Amount">
+                <label for="floatingInputamt">Amount</label>
+              </div>
+              <!-- amount error msg -->
+              <div *ngIf="this.fundTransferForm.get('amount')?.errors&&this.fundTransferForm.get('amount')?.touched" class="text-danger mb-3"> Invalid Amount</div>
+
+            <!-- profile password -->
+            <div class="form-floating">
+                <input name="password" formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Profile Password">
+                <label for="floatingPassword">Profile Password</label>
+              </div>
+               <!-- pswd error msg -->
+               <div *ngIf="this.fundTransferForm.get('password')?.errors&&this.fundTransferForm.get('password')?.touched" class="text-danger mb-3"> Invalid Profile Password</div>
+
+          </form>
+        </div>
+        <!-- success response -->
+        <div class="m-2 text-success fs-5 fw-bolder"> {{transferSuccessMsg}} </div>
+        <!-- failed response -->
+        <div class="m-2 text-danger fs-5 fw-bolder">{{transferErrorMsg}} </div>
+        <div class="modal-footer">
+          <button (click)="transfer()" type="button" class="btn btn-primary">Transfer</button>
+          <button (click)="closeFundTransferForm()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

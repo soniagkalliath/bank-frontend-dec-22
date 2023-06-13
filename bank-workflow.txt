@@ -1,0 +1,21 @@
+
+
+
+                        Bank - Front End - using Angular
+
+    1. create angular project
+    2. run angular project
+    3. clean code by removing all code from AppComponent html page
+    4. Include 3rd party library in project, bootstrap,font awsome,google fonts in index.html
+    5. generate components
+        1. login
+        2. register
+        3. dashboard (balance enquiry,fund transfer,mini statement,account delete,log out)
+        4. transactions
+        5. page not found
+    6. set up path for each component in AppRoutingModule
+    7. use router-outlet selector in AppComponent html
+    8. design components
+        - page-not-found 
+        - login
+    9. Create service to make api call
